@@ -1,7 +1,9 @@
+import path from 'path';
 import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import strip from '@rollup/plugin-strip';
 import { terser } from 'rollup-plugin-terser';
+import license from 'rollup-plugin-license';
 
 const ROOT_CONSTANTS = {
   input: 'src/StylishedComponents.jsx',
@@ -20,16 +22,14 @@ const ROOT_CONSTANTS = {
     terser: {
       output: {
         comments: 'all',
-        /*
-        comments: function (node, comment) {
-          var text = comment.value;
-          var type = comment.type;
-          if (type == 'comment2') {
-            // multiline comment
-            return /@keep|@license|@cc_on/i.test(text);
-          }
+      },
+    },
+    license: {
+      banner: {
+        commentStyle: 'regular',
+        content: {
+          file: path.join(__dirname, 'LICENSE'),
         },
-        */
       },
     },
   },
@@ -43,8 +43,9 @@ const CONSTANTS = {
     strip(),
     babel(ROOT_CONSTANTS.plugins.babel),
     terser(ROOT_CONSTANTS.plugins.terser),
-  ]
-}
+    license(ROOT_CONSTANTS.plugins.license),
+  ],
+};
 
 export default [
   // ES

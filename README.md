@@ -5,7 +5,7 @@ Very similar to `styled-components`, but a lot smaller (and with far less featur
 # Installation
 
 ```
-npm install --save stylished-componenta
+npm install --save stylished-components
 ```
 
 # Notes

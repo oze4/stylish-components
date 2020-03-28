@@ -29,10 +29,10 @@ See examples below for more info.
 import stylished from 'stylished-components';
 
 const StylishedDiv = stylished('div')`
-  height: 200px;
-  width: 200px;
+  height: ${({ height = '400px' }) => height};
+  width: ${({ width = '400px' }) => width};
   @media (min-width: 900px) {
-      width: 100px;
+      border: 1px solid black;
   }
   /* anything CSS goes */
 `;
@@ -40,7 +40,7 @@ const StylishedDiv = stylished('div')`
 // then use it in React
 // ...
 return (
-    <StyledDiv>
+    <StyledDiv height="200px" width="200px">
     // ...
     </StyledDiv>
 );

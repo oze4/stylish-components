@@ -29,12 +29,17 @@ See examples below for more info.
 import stylished from 'stylished-components';
 
 const StylishedDiv = stylished('div')`
+  /* Can even pass in props! */
   height: ${({ height = '400px' }) => height};
   width: ${({ width = '400px' }) => width};
+  background-color: gray;
+
+  /* Supports media queries! */
   @media (min-width: 900px) {
       border: 1px solid black;
   }
-  /* anything CSS goes */
+
+  /* ~anything CSS goes! */
 `;
 
 // then use it in React

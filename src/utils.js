@@ -1,4 +1,6 @@
-/* TAKEN FROM STYLED COMPONENTS */
+import { version } from '../package.json';
+
+/* THE FOLLOWING 2 FUNCTIONS WERE TAKEN FROM STYLED COMPONENTS */
 /* https://github.com/styled-components/styled-components/blob/v3.3.3/src/utils/generateAlphabeticName.js */
 const charsLength = 52;
 
@@ -9,10 +11,8 @@ const getAlphabeticChar = (code) => {
 const generateAlphabeticName = (code) => {
   let name = '';
   let x;
-  console.log('\r\n')
   for (x = code; x > charsLength; x = Math.floor(x / charsLength)) {
     name = getAlphabeticChar(x % charsLength) + name;
-    console.log('x =', x, ' | ', 'Math.floor(x / charsLength) =', Math.floor(x / charsLength), ' | ', x % charsLength, ' | ', name);
   }
   return getAlphabeticChar(x % charsLength) + name;
   /* END TAKEN FROM STYLED COMPONENTS */ 
@@ -20,17 +20,17 @@ const generateAlphabeticName = (code) => {
 
 export const generateNewClassName = () => {
   const randomNumbers = Math.floor(Math.random() * 9999999999999);
-  return generateAlphabeticName(randomNumbers);
+  return `stylished-${generateAlphabeticName(randomNumbers)}`;
 }
 
 export const makeStylesheet = () => {
   const sheet = document.createElement('style');
-  sheet.setAttribute('data-stylish', 'stylin');
+  sheet.setAttribute('data-stylished', version);
   document.head.appendChild(sheet);
 };
 
 export const getStylesheet = () => {
-  return document.querySelector('style[data-stylish]');
+  return document.querySelector('style[data-stylished]');
 }
 
 export const cleanStyleString = str => {

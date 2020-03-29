@@ -1,9 +1,14 @@
 import path from 'path';
 import babel from 'rollup-plugin-babel';
-import resolve from '@rollup/plugin-node-resolve';
-import strip from '@rollup/plugin-strip';
-import { terser } from 'rollup-plugin-terser';
-import license from 'rollup-plugin-license';
+import resolve from '@rollup/plugin-node-resolve'; // Resolve file extensions 
+import strip from '@rollup/plugin-strip'; // Remove debugging code (like console.log(), etc..)
+import { terser } from 'rollup-plugin-terser'; // Uglify/minify
+import license from 'rollup-plugin-license'; // Dumps license into compiled files
+import json from '@rollup/plugin-json'; // Lets us import json files as modules
+
+/**
+ * Root constants that make up the base of our config
+ */
 
 const ROOT_CONSTANTS = {
   input: 'src/StylishedComponents.jsx',
@@ -36,10 +41,15 @@ const ROOT_CONSTANTS = {
   external: ['react'],
 };
 
+/**
+ * Constants to be used in Rollup bundles
+ */
+
 const CONSTANTS = {
   ...ROOT_CONSTANTS,
   pluginsObj: [
     resolve(ROOT_CONSTANTS.plugins.resolve),
+    json(),
     strip(),
     babel(ROOT_CONSTANTS.plugins.babel),
     terser(ROOT_CONSTANTS.plugins.terser),
@@ -47,7 +57,11 @@ const CONSTANTS = {
   ],
 };
 
-export default [
+/**
+ * Bundles built here
+ */
+
+const bundles = [
   // ES
   {
     input: CONSTANTS.input,
@@ -63,7 +77,7 @@ export default [
     input: CONSTANTS.input,
     output: {
       file: 'lib/stylished-components.umd.js',
-      name: 'ReactFlexboxSlim',
+      name: 'StylishedComponents',
       format: 'umd',
       globals: CONSTANTS.output.globals,
     },
@@ -83,3 +97,5 @@ export default [
     external: CONSTANTS.external,
   },
 ];
+
+export default bundles;

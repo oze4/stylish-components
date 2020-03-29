@@ -12,8 +12,8 @@ const cssParser = new cssjs();
 
 const StylishComponents = (TargetComponent) => (strs, ...exprs) => {
   return class extends Component {
-    interpolateStyle() {
-      // Check whether or not the user supplied a function
+    init() {
+      // Check whether or not the user supplied props (function or not)
       // If so, run the function and add the result to our style object
       const style = exprs.reduce((result, expr, index) => {
         const isFunc = typeof expr === 'function';
@@ -36,7 +36,7 @@ const StylishComponents = (TargetComponent) => (strs, ...exprs) => {
       // Main object which holds the css that will be added to the page
       let finalStyles = `.${className} {${styleSanitized}}`;
 
-      // If media queries were found, parse strings to objects,
+      // If media queries were found, parse strings to array of objects,
       // loop through them, and the rules within them, add our 
       // custom class name to each rule, then add to our main css (but hoisted)
       if (mediaQueriesArray && mediaQueriesArray.length) {
@@ -50,29 +50,29 @@ const StylishComponents = (TargetComponent) => (strs, ...exprs) => {
             });
           });
           mediaQueryStr += '}}';
-          finalStyles += mediaQueryStr;
+          finalStyles += `\n${mediaQueryStr}`;
         });
       }
 
       // Check if we already added a stylesheet, if not, add one
-      let existingSheet = getStylesheet();
-      if (!existingSheet) {
+      let stylesheet = getStylesheet();
+      if (!stylesheet) {
         makeStylesheet();
-        existingSheet = getStylesheet();
+        stylesheet = getStylesheet();
       }
 
       // Add our new class to the element that the user is styling
       this.element.setAttribute('class', className);
       // Add styles to page
-      existingSheet.textContent += finalStyles;
+      stylesheet.textContent += finalStyles;
     }
 
     componentDidMount() {
-      this.interpolateStyle();
+      this.init();
     }
 
     componentDidUpdate() {
-      this.interpolateStyle();
+      this.init();
     }
 
     render() {

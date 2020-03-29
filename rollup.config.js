@@ -20,9 +20,9 @@ const ROOT_CONSTANTS = {
       exclude: 'node_modules/**',
     },
     terser: {
-      output: {
-        comments: 'all',
-      },
+      // output: {
+      //   comments: 'all',
+      // },
     },
     license: {
       banner: {
@@ -52,7 +52,7 @@ export default [
   {
     input: CONSTANTS.input,
     output: {
-      file: 'lib/esm/index.js',
+      file: 'lib/stylished-components.esm.js',
     },
     plugins: CONSTANTS.pluginsObj,
     external: CONSTANTS.external,
@@ -62,7 +62,7 @@ export default [
   {
     input: CONSTANTS.input,
     output: {
-      file: 'lib/umd/index.js',
+      file: 'lib/stylished-components.umd.js',
       name: 'ReactFlexboxSlim',
       format: 'umd',
       globals: CONSTANTS.output.globals,
@@ -75,7 +75,7 @@ export default [
   {
     input: CONSTANTS.input,
     output: {
-      file: 'lib/cjs/index.js',
+      file: 'lib/stylished-components.cjs.js',
       format: 'cjs',
       globals: CONSTANTS.output.globals,
     },

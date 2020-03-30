@@ -14,8 +14,7 @@ describe('DevTest server', () => {
 
 describe('Rendered stylished component', () => {
   it('has a background-color of red', () => {
-    const red = 'red';
-    // const red = 'rgb(255, 0, 0)';
+    const red = 'rgb(255, 0, 0)';
     cy.viewport(550, 750)
       .get('button')
       .contains('cypress')

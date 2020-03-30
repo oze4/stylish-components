@@ -12,21 +12,31 @@ npm install --save stylished-components
 
 # Notes
 
-We provide es, cjs, and umd modules.  The es build is import by default. In order to import cjs or umd:
+By default, we only include es module with our bundle.  We do provide the ability to easily bundle cjs and umd by forking this repo and running `npm run build` (or `yarn`)
 
-```javascript
-import stylished from 'stylished-components/lib/stylished-components.cjs.js'; // cjs
-import stylished from 'stylished-components/lib/stylished-components.umd.js'; // umd
-```
+ - #### Media Queries
 
 To use media queries, leave off the class name but keep the curly braces, like:
 
 ```javascript
-const MyComponent = stylished('div')`
+const MediaQueryDiv = stylished('div')`
   @media (min-width: 900px) {{
     color: orange;
     border: 1px solid blue;
   }}
+`;
+```
+
+ - #### Hover
+
+To use hover, place an `&` before hover, like:
+
+```javascript
+const HoverDiv = stylished('div')`
+  background-color: blue;
+  &:hover {
+    background-color: green;
+  }
 `;
 ```
 
@@ -52,6 +62,12 @@ const StylishedDiv = stylished('div')`
   @media (min-width: 900px) {{
       border: 1px solid black;
   }}
+
+  /* Can use hover, too! */
+  /* Just use the & sign, like so */
+  &:hover {
+    color: green;
+  }
 
   /* ~almost~ anything CSS goes! */
 `;
@@ -85,8 +101,8 @@ const MyComponent = stylished('li')`
 
  - `npm test`
    - launches test app (built with create-react-app) from `__tests__/app`
-     - browser does not auto-open by default
-   - run `cypress run`
+     - *browser does not auto-open by default*
+   - then runs `cypress run`
 
  - `npm run build`
    - prompts you for which module types to bundle before bundling
@@ -95,4 +111,4 @@ const MyComponent = stylished('li')`
    - bundles all module types without prompting (esm, cjs, umd)
 
  - `npm run cyp`
-   - starts dev server and opens cypress
+   - starts dev server and opens cypress without automatically testing

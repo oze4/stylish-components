@@ -40,3 +40,7 @@ export const cleanStyleString = str => {
 export const getMediaQueries = str => {
   return cleanStyleString(str).match(/((@media [\s]*).*?[^}]*}.*?})/g);
 }
+
+export const getHoverEffects = str => {
+  return str.match(/((&.*:.*hover[\s]*).*?[^}]*})/g);
+}

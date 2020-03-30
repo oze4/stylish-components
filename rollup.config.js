@@ -11,7 +11,7 @@ import json from '@rollup/plugin-json'; // Lets us import json files as modules
  */
 
 const ROOT_CONSTANTS = {
-  input: 'src/StylishedComponents.jsx',
+  input: 'src/stylished.jsx',
   output: {
     globals: {
       react: 'React',

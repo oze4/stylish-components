@@ -1,6 +1,6 @@
 {
   "name": "stylished-components",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Tiny Styled Components Library for React",
   "main": "lib/stylished-components.esm.js",
   "scripts": {

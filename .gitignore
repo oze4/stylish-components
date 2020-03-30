@@ -26,8 +26,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # cypress
-cypress.json
-cypress/
+# cypress.json
+# cypress/
 
 # demo/testing
 demo/

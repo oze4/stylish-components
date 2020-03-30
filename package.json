@@ -4,14 +4,15 @@
   "description": "Tiny Styled Components Library for React",
   "main": "lib/stylished-components.esm.js",
   "scripts": {
-    "prepublish": "npm run rollup",
-    "rollup": "./node_modules/.bin/rollup -c",
+    "prepublish": "npm run build && npm test",
+    "build": "./node_modules/.bin/rollup -c",
     "flow": "flow",
-    "test": "start-server-and-test start:dev:server http://localhost:3000 cyp:run",
+    "test": "start-server-and-test dev http://localhost:3000 cyp:run",
+    "cyp:open": "cypress open",
     "cyp:run": "cypress run",
-    "cyp:open": "BROWSER=open start-server-and-test start:dev:server http://localhost:3000 'cypress open'",
+    "cyp": "BROWSER=open start-server-and-test dev http://localhost:3000 cyp",
     "lint": "eslint src",
-    "start:dev:server": "cd __tests__/app && npm start"
+    "dev": "cd __tests__/app && npm start"
   },
   "peerDependencies": {
     "react": "*",

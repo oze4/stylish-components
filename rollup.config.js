@@ -1,4 +1,3 @@
-import path from 'path';
 import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve'; // Resolve file extensions 
 import strip from '@rollup/plugin-strip'; // Remove debugging code (like console.log(), etc..)
@@ -30,12 +29,7 @@ const ROOT_CONSTANTS = {
       // },
     },
     license: {
-      banner: {
-        commentStyle: 'regular',
-        content: {
-          file: path.join(__dirname, 'LICENSE'),
-        },
-      },
+      banner: `Copyright <%= moment().format('YYYY') %> - Matt Oestreich - See LICENSE file in this repository to view all licensing info`,
     },
   },
   external: ['react'],

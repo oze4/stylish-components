@@ -7,7 +7,6 @@ import {
   getMediaQueries,
   getHoverEffects,
 } from './utils';
-import domElements from './domElements';
 import CssJs from './css';
 
 const cssParser = new CssJs();
@@ -94,9 +93,5 @@ const stylished = TargetComponent => (strs, ...exprs) => {
     }
   };
 };
-
-domElements.forEach(el => {
-  stylished[el] = stylished(el);
-});
 
 export default stylished;

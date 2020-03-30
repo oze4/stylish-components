@@ -53,10 +53,11 @@ const CONSTANTS = {
 
 /**
  * Bundles built here
+ * Only bundle ESM for npm package
  */
 
 const bundles = [
-  // ES
+  // ESM
   {
     input: CONSTANTS.input,
     output: {
@@ -66,6 +67,7 @@ const bundles = [
     external: CONSTANTS.external,
   },
 
+  /*
   // UMD
   {
     input: CONSTANTS.input,
@@ -90,6 +92,7 @@ const bundles = [
     plugins: CONSTANTS.pluginsObj,
     external: CONSTANTS.external,
   },
+  */
 ];
 
 export default bundles;

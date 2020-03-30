@@ -80,3 +80,19 @@ const MyComponent = stylished('li')`
   /* CSS here */
 `;
 ```
+
+# NPM Scripts
+
+ - `npm test`
+   - launches test app (built with create-react-app) from `__tests__/app`
+     - browser does not auto-open by default
+   - run `cypress run`
+
+ - `npm run build`
+   - prompts you for which module types to bundle before bundling
+
+ - `npm run rollup`
+   - bundles all module types without prompting (esm, cjs, umd)
+
+ - `npm run cyp`
+   - starts dev server and opens cypress

@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/stylished-components.svg)](https://badge.fury.io/js/stylished-components)
+
 # stylished-components
 
 Very similar to `styled-components`, but a lot smaller (and with far less features). We contain the core functionality that `styled-components` does, though. If you need a quick way to build out components in a `styled-components` familiar syntax, give us a try!
